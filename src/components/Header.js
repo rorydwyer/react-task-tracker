@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
+import Button from "./Button";
 
 const Header = ({ title }) => {
   return (
-    <header>
+    <header class="flex justify-between">
       <h1 className="text-4xl">{title}</h1>
+      <Button color="black" text="Add Task" />
     </header>
   );
 };
