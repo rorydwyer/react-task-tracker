@@ -12,10 +12,21 @@ function App() {
     { id: 6, text: "Task 6", day: "Saturday", reminder: false },
   ]);
 
+  // Delete task
+  const deleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  // Toggle reminder
+  const toggleReminder = (id) => {
+    setTasks(tasks.map((task) => (task.id === id ? { ...task, reminder: !task.reminder } : task)));
+  };
+
   return (
     <div className="container">
       <Header title="Task List" />
-      <Tasks tasks={tasks} />
+
+      {tasks.length === 0 ? <p>You have no tasks</p> : <Tasks tasks={tasks} onToggle={toggleReminder} onDelete={deleteTask} />}
     </div>
   );
 }
