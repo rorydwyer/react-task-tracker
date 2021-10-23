@@ -9,7 +9,7 @@ const Task = ({ task, onDelete, onToggle }) => {
       }}
     >
       <h3 className="font-semibold flex justify-between">
-        {task.text}{" "}
+        <span>{task.text}</span>
         <FaTimes
           onClick={() => {
             onDelete(task.id);

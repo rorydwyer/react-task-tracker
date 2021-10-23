@@ -21,10 +21,11 @@ const AddTask = ({ onAdd }) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="mb-8">
       <div className="form-control">
         <label>Task Name</label>
         <input
+          className="border rounded border-gray-300 m-0"
           type="text"
           value={text}
           onChange={(e) => {
@@ -36,6 +37,7 @@ const AddTask = ({ onAdd }) => {
       <div className="form-control">
         <label>Day & Time</label>
         <input
+          className="border rounded border-gray-300 m-0"
           type="text"
           value={day}
           onChange={(e) => {
@@ -44,9 +46,10 @@ const AddTask = ({ onAdd }) => {
           placeholder="add text"
         />
       </div>
-      <div className="form-control">
-        <label>Reminder</label>
+      <div className="form-control-check mb-4">
+        <label className="mb-2">Reminder</label>
         <input
+          className="w-8"
           type="checkbox"
           value={reminder}
           checked={reminder}
@@ -56,7 +59,7 @@ const AddTask = ({ onAdd }) => {
         />
       </div>
 
-      <input type="submit" value="Add Task" />
+      <input type="submit" value="Add Task" className="btn w-full" />
     </form>
   );
 };

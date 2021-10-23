@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div className="container">
-      <Header title="Task List" onShowAddTask={toggleAddTask} />
+      <Header title="Task List" onShowAddTask={toggleAddTask} addTask={showAddTasks} />
       {showAddTasks ? <AddTask onAdd={addTask} /> : ""}
       {tasks.length === 0 ? <p>You have no tasks</p> : <Tasks tasks={tasks} onToggle={toggleReminder} onDelete={deleteTask} />}
     </div>
