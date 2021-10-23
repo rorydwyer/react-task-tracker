@@ -1,8 +1,11 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
 
 function App() {
+  const [showAddTasks, setShowAddTasks] = useState(false);
+
   const [tasks, setTasks] = useState([
     { id: 1, text: "Task 1", day: "Monday", reminder: false },
     { id: 2, text: "Task 2", day: "Tuesday", reminder: false },
@@ -11,6 +14,16 @@ function App() {
     { id: 5, text: "Task 5", day: "Friday", reminder: false },
     { id: 6, text: "Task 6", day: "Saturday", reminder: false },
   ]);
+
+  // Toggle Add Task Form
+  const toggleAddTask = () => {
+    setShowAddTasks(!showAddTasks);
+  };
+
+  // Add task
+  const addTask = ({ text, day, reminder }) => {
+    setTasks([...tasks, { id: tasks.length + 1, text, day, reminder }]);
+  };
 
   // Delete task
   const deleteTask = (id) => {
@@ -24,8 +37,8 @@ function App() {
 
   return (
     <div className="container">
-      <Header title="Task List" />
-
+      <Header title="Task List" onShowAddTask={toggleAddTask} />
+      {showAddTasks ? <AddTask onAdd={addTask} /> : ""}
       {tasks.length === 0 ? <p>You have no tasks</p> : <Tasks tasks={tasks} onToggle={toggleReminder} onDelete={deleteTask} />}
     </div>
   );
